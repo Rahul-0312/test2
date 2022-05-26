@@ -21,19 +21,19 @@ jobs:
         run: | 
           echo "Project Setup success." 
         
-      - name: Update flag
-        run: gh secret set FLAG --body "true"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GHTOKEN }}  
+      # - name: Update flag
+      #   run: gh secret set FLAG --body "true"
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GHTOKEN }}  
 
-  # Post-Setup:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: nth-execution
-  #       if: ${{ success() }}
-  #       uses: hmanzur/actions-set-secret@v2.0.0
-  #       with:
-  #         name: 'FLAG'
-  #         value: 'true'
-  #         repository: Rahul-0312/test2
-  #         token: ${{ secrets.GHTOKEN }}
+  Post-Setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: nth-execution
+        if: ${{ success() }}
+        uses: hmanzur/actions-set-secret@v2.0.0
+        with:
+          name: 'FLAG'
+          value: 'true'
+          repository: Rahul-0312/test2
+          token: ${{ secrets.GHTOKEN }}
