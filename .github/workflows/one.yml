@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: first-execution
         if: ${{ github.run_number == '1' }}
-          run: echo "Project Setup success"
+        run: echo "Project Setup success"
 
       - name:  nth-execution
-          run: echo "Project already setup moving to CodeQL"
+        run: echo "Project already setup moving to CodeQL"

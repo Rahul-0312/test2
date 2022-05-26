@@ -9,4 +9,4 @@ jobs:
      runs-on: ubuntu-latest
      steps:
       - name: first-execution
-          run: echo "CodeQL execution."
+        run: echo "CodeQL execution."
