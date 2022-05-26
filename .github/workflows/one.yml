@@ -14,10 +14,10 @@ env:
 
 jobs:
   Project-Setup:
+    if: ${{ env.FLAG == 'false' }}
     runs-on: ubuntu-latest
     steps:
       - name: first-execution
-        if: ${{ env.FLAG == 'false' }}
         run: | 
           echo "Project Setup success." 
         
