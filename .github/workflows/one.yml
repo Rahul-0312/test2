@@ -26,9 +26,9 @@ jobs:
     steps:
       - name: nth-execution
         if: ${{ success() }}
-        run: |
-          gh secret set FLAG --body true
-          echo "Project already setup moving to CodeQL Runner ID - ${{ github.run_number }}"
-          echo ${{ env.FLAG }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
+        uses: hmanzur/actions-set-secret@v2.0.0
+        with:
+          name: 'FLAG'
+          value: 'true'
+          repository: Rahul-0312/test2
+          token: ${{ secrets.GHTOKEN }}
