@@ -9,12 +9,15 @@ on:
       - main
       - test
 
+env:
+  FLAG: ${{ secrets.FLAG }} 
+
 jobs:
   Project-Setup:
     runs-on: ubuntu-latest
     steps:
       - name: first-execution
-        if: ${{ secrets.FLAG == 'false' }}
+        if: ${{ env.FLAG == 'false' }}
         run: | 
           echo "Project Setup success" 
 
