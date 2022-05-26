@@ -26,5 +26,5 @@ jobs:
     steps:  
       - name:  nth-execution
         run: |
-          ${{ job.Project-Setup.status }}
+          echo ${{ job.Project-Setup.status }}
           echo "Project already setup moving to CodeQL Runner ID - ${{ github.run_number }}"
