@@ -24,8 +24,8 @@ jobs:
   Post-Setup:
     runs-on: ubuntu-latest
     steps:
-      if: ${{ success() }}
       - name: nth-execution
+        if: ${{ success() }}
         run: |
           gh secret set FLAG --body true
           echo "Project already setup moving to CodeQL Runner ID - ${{ github.run_number }}"
