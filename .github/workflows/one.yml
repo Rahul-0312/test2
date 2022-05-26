@@ -8,19 +8,20 @@ on:
     branches:
       - main
       - test
-env:
-  FLAG: 0
 
 jobs:
   Project-Setup:
     runs-on: ubuntu-latest
     steps:
       - name: first-execution
-        if: ${{ env.FLAG == '0' }}
+        if: ${{ secrets.FLAG == 'false' }}
         run: | 
-          $flag = 1 >> ${env.FLAG}
-          echo ${env.FLAG}
           echo "Project Setup success" 
 
+  Post-Setup:
+    runs-on: ubuntu-latest
+    steps:  
       - name:  nth-execution
-        run: echo "Project already setup moving to CodeQL Runner ID - ${{ github.run_number }}"
+        run: |
+          ${{ job.Project-Setup.status }}
+          echo "Project already setup moving to CodeQL Runner ID - ${{ github.run_number }}"
