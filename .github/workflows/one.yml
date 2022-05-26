@@ -17,4 +17,4 @@ jobs:
         run: echo "Project Setup success"
 
       - name:  nth-execution
-        run: echo "Project already setup moving to CodeQL"
+        run: echo "Project already setup moving to CodeQL Runner ID - ${{ github.run_number }}"
