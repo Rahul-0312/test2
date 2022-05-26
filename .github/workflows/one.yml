@@ -10,13 +10,19 @@ on:
 
 jobs:
   build:
-    if: ${{ github.run_number == '1' }}
+    
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+jobs:
+   first-execution:
+     runs-on: ubuntu-latest
+     if: ${{ github.run_number == '1' }}
+     steps:
+       - run: echo "Project Setup success"
 
-      - name: Run a line script
-        run: |
-          echo "This is ONE-YAML"
-          echo ${{github.run_number}}
+   nth-execution:
+     runs-on: ubuntu-latest
+     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+     steps:
+       - run: echo "Project already setup moving to CodeQL"
