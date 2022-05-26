@@ -8,4 +8,5 @@ jobs:
    CodeQL:
      runs-on: ubuntu-latest
      steps:
-       - run: echo "Running CodeQL"
+      - name: first-execution
+          run: echo "CodeQL execution."

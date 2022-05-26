@@ -9,15 +9,12 @@ on:
       - main
 
 jobs:
-  build:
+  Project Setup:
+    runs-on: ubuntu-latest
     steps:
-      runs-on: ubuntu-latest
-      first-execution:
+      - name: first-execution
         if: ${{ github.run_number == '1' }}
-        steps:
-          - run: echo "Project Setup success"
+          run: echo "Project Setup success"
 
-      nth-execution:
-        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-        steps:
-          - run: echo "Project already setup moving to CodeQL"
+      - name:  nth-execution
+          run: echo "Project already setup moving to CodeQL"
