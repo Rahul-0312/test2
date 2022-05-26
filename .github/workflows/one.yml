@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  Project Setup:
+  Project-Setup:
     runs-on: ubuntu-latest
     steps:
       - name: first-execution
