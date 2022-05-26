@@ -19,7 +19,7 @@ jobs:
       - name: first-execution
         if: ${{ env.FLAG == 'false' }}
         run: | 
-          echo "Project Setup success" 
+          echo "Project Setup success." 
 
   Post-Setup:
     runs-on: ubuntu-latest
