@@ -31,4 +31,4 @@ jobs:
           echo "Project already setup moving to CodeQL Runner ID - ${{ github.run_number }}"
           echo ${{ env.FLAG }}
         env:
-        GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
