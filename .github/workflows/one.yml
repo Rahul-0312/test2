@@ -23,8 +23,12 @@ jobs:
 
   Post-Setup:
     runs-on: ubuntu-latest
-    steps:  
-      - name:  nth-execution
+    steps:
+      if: ${{ success() }}
+      - name: nth-execution
         run: |
-          echo ${{ job.Project-Setup.status }}
+          gh secret set FLAG --body true
           echo "Project already setup moving to CodeQL Runner ID - ${{ github.run_number }}"
+          echo ${{ env.FLAG }}
+        env:
+        GITHUB_TOKEN: ${{ secrets.GHTOKEN }}
