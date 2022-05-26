@@ -10,17 +10,17 @@ on:
 
 jobs:
   build:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  steps:
-   first-execution:
-     runs-on: ubuntu-latest
-     if: ${{ github.run_number == '1' }}
-     steps:
-       - run: echo "Project Setup success"
+    steps:
+      first-execution:
+        runs-on: ubuntu-latest
+        if: ${{ github.run_number == '1' }}
+        steps:
+          - run: echo "Project Setup success"
 
-   nth-execution:
-     runs-on: ubuntu-latest
-     if: ${{ github.event.workflow_run.conclusion == 'failure' }}
-     steps:
-       - run: echo "Project already setup moving to CodeQL"
+      nth-execution:
+        runs-on: ubuntu-latest
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        steps:
+          - run: echo "Project already setup moving to CodeQL"
