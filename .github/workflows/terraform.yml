@@ -1,34 +1,50 @@
 name: 'Terraform'
 
 on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: Acion to preform in remove-leavers job
+        required: false
+        default: leavers
+        type: choice
+        options:
+        - inactive_users
+        - leavers
+      table:
+        description: Acion to preform in remove-leavers job
+        required: false
+        default: leavers
+        type: choice
+        options:
+        - latest
+        - iam_leavers
+      schema:
+        description: Acion to preform in remove-leavers job
+        required: false
+        default: leavers
+        type: choice
+        options:
+        - ado_users
+        - iam_leavers_ado_users
   push:
     branches:
     - "main"
-  pull_request:
 
 permissions:
   contents: read
 
+env:
+  TABLE: ${{ inputs.table }}
+  SCHEMA: ${{ inputs.schema }}
+
 jobs:
   infra_build:
-    name: 'Run Terraform Commands'
+    name: 'Run Commands'
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-    
-    - name: Terraform Init
-      run: terraform init
-
-    - name: Terraform Format
-      run: terraform fmt -check
-
-    - name: Terraform Plan
-      run: terraform plan -input=false
-
-    - name: Terraform Apply
-      run: terraform apply -auto-approve -input=false
+    - name: Echo
+      run: echo 'This is GH - ${{ env.table }} + ${{ env.schema }}'
